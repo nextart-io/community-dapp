@@ -55,7 +55,14 @@ const config: Config = {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+  		screens: {
+  			'sm': '640px',    // 手机
+  			'md': '768px',    // 平板
+  			'lg': '1024px',   // 小型桌面
+  			'xl': '1280px',   // 大型桌面
+  			'2xl': '1536px',  // 超大屏幕
+  		},
   	}
   },
   plugins: [require("tailwindcss-animate")],
