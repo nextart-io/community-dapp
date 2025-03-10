@@ -26,8 +26,8 @@ export default function Header({ setShowMenuPopup }: HeaderProps) {
         <Image 
           src="/landingpage/activites/solar_list-bold-duotone.png" 
           alt="菜单" 
-          width={24} 
-          height={24} 
+          width={48} 
+          height={48} 
           className="object-contain"
         />
       </button>
