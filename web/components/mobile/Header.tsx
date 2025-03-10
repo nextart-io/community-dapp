@@ -20,7 +20,7 @@ export default function Header({ setShowMenuPopup }: HeaderProps) {
         />
       </div>
       <button 
-        className="p-0 bg-[#FFEE32] rounded-full w-12 h-12 flex items-center justify-center"
+        className="p-0 bg-[#FFFC26] rounded-full w-12 h-12 flex items-center justify-center"
         onClick={() => setShowMenuPopup(true)}
       >
         <Image 

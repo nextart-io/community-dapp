@@ -92,6 +92,18 @@ const config: Config = {
 				"0%": { transform: "translateX(calc(-100% - 1rem))" },
 				"100%": { transform: "translateX(0)" },
 			},
+			"scroll-vertical": {
+				"0%": { transform: "translateY(0)" },
+				"100%": { transform: "translateY(calc(-50% - 0.75rem))" }
+			},
+			"scroll-down": {
+				"0%": { transform: "translateY(0)" },
+				"100%": { transform: "translateY(calc(-33.33% - 0.75rem))" }
+			},
+			"scroll-up": {
+				"0%": { transform: "translateY(calc(-66.66% - 0.75rem))" },
+				"100%": { transform: "translateY(0)" }
+			}
   		},
   		animation: {
   			"accordion-down": "accordion-down 0.2s ease-out",
@@ -99,6 +111,9 @@ const config: Config = {
   			"slide-up": "slide-up 0.3s ease-out",
 			"scroll-left": "scroll-left 30s linear infinite",
 			"scroll-right": "scroll-right 30s linear infinite",
+			"scroll-vertical": "scroll-vertical 20s linear infinite",
+			"scroll-down": "scroll-down 25s linear infinite",
+			"scroll-up": "scroll-up 25s linear infinite",
   		},
   	}
   },

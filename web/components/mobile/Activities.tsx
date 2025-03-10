@@ -73,7 +73,7 @@ export default function Activities() {
       <div className="bg-black text-white py-4 px-5">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-4xl font-black tracking-wide">ACTIVITES</h2>
-          <div className="bg-[#FFEE32] rounded-full w-12 h-12 flex items-center justify-center">
+          <div className="bg-[#FFFC26] rounded-full w-12 h-12 flex items-center justify-center">
             <Image 
               src="/landingpage/activites/solar_list-bold-duotone.png"
               alt="menu icon"
