@@ -3,9 +3,10 @@ import type { Config } from "tailwindcss";
 const config: Config = {
     darkMode: ["class"],
     content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   theme: {
   	extend: {
@@ -62,6 +63,32 @@ const config: Config = {
   			'lg': '1024px',   // 小型桌面
   			'xl': '1280px',   // 大型桌面
   			'2xl': '1536px',  // 超大屏幕
+  		},
+  		container: {
+  			center: true,
+  			padding: "2rem",
+  			screens: {
+  				"2xl": "1400px",
+  			},
+  		},
+  		keyframes: {
+  			"accordion-down": {
+  				from: { height: "0" },
+  				to: { height: "var(--radix-accordion-content-height)" },
+  			},
+  			"accordion-up": {
+  				from: { height: "var(--radix-accordion-content-height)" },
+  				to: { height: "0" },
+  			},
+  			"slide-up": {
+  				"0%": { transform: "translateY(100%)" },
+  				"100%": { transform: "translateY(0)" },
+  			},
+  		},
+  		animation: {
+  			"accordion-down": "accordion-down 0.2s ease-out",
+  			"accordion-up": "accordion-up 0.2s ease-out",
+  			"slide-up": "slide-up 0.3s ease-out",
   		},
   	}
   },

@@ -3,7 +3,7 @@ import { getUserProfile } from '@/contracts/query'
 import { useCurrentAccount } from '@mysten/dapp-kit'
 import { useEffect, useState } from 'react'
 import { CategorizedObjects } from '@/utils/assetsHelpers'
-import MobileAssetView from '@/components/mobile/AssetView'
+import MobileLandingView from '@/components/mobile/LandingView'
 import DesktopAssetView from '@/components/desktop/AssetView'
 import { useDevice } from '@/hooks/useDevice'
 
@@ -28,9 +28,9 @@ export default function Home() {
   }, [account]);
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className={`min-h-screen ${isMobile ? 'bg-white' : 'bg-gray-100'}`}>
       {isMobile ? (
-        <MobileAssetView userObjects={userObjects} />
+        <MobileLandingView userObjects={userObjects} />
       ) : (
         <DesktopAssetView userObjects={userObjects} />
       )}
