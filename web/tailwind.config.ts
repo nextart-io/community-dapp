@@ -84,11 +84,21 @@ const config: Config = {
   				"0%": { transform: "translateY(100%)" },
   				"100%": { transform: "translateY(0)" },
   			},
+			"scroll-left": {
+				"0%": { transform: "translateX(0)" },
+				"100%": { transform: "translateX(calc(-100% - 1rem))" },
+			},
+			"scroll-right": {
+				"0%": { transform: "translateX(calc(-100% - 1rem))" },
+				"100%": { transform: "translateX(0)" },
+			},
   		},
   		animation: {
   			"accordion-down": "accordion-down 0.2s ease-out",
   			"accordion-up": "accordion-up 0.2s ease-out",
   			"slide-up": "slide-up 0.3s ease-out",
+			"scroll-left": "scroll-left 30s linear infinite",
+			"scroll-right": "scroll-right 30s linear infinite",
   		},
   	}
   },
