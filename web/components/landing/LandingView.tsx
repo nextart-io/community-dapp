@@ -49,7 +49,7 @@ export default function ResponsiveView({ userObjects }: ResponsiveViewProps) {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-white font-sans">
+    <div className="relative min-h-screen bg-white font-sans">
       {/* 响应式Header组件 */}
       <Header 
         setShowMenuPopup={setShowMenuPopup} 
@@ -57,21 +57,20 @@ export default function ResponsiveView({ userObjects }: ResponsiveViewProps) {
       />
 
       {/* 主要内容 - 响应式布局 */}
-      <main className="px-3 md:px-6 lg:px-8 pt-0 md:pt-20 max-w-7xl mx-auto">      
-        {/* 移动端组件 - 适应更大屏幕 */}
-        <div className={userObjects ? 'mt-8' : ''}>
-          {/* 介绍区域 */}
-          <Introduction />
-          
-          {/* 活动区域 */}
-          <Activities />
-          
-          {/* 合作伙伴区域 */}
-          <CoPartners />
-          
-          {/* NFT墙 */}
-          <NFTWall />
-          
+      <main className="pt-0 md:pt-20 overflow-visible">      
+        {/* 介绍区域 - 全宽 */}
+        <Introduction />
+        
+        {/* 活动区域 - 全宽 */}
+        <Activities />
+        
+        {/* 合作伙伴区域 - 全宽 */}
+        <CoPartners />
+        
+        {/* NFT墙 - 全宽 */}
+        <NFTWall />
+        
+        <div className="px-3 md:px-6 lg:px-8 max-w-7xl mx-auto">
           {/* 捐赠区域 */}
           <Donate />
         </div>
