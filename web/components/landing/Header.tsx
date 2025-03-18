@@ -95,7 +95,7 @@ export default function Header({ setShowMenuPopup, setShowWalletPopup }: HeaderP
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
-                        <span>个人资料</span>
+                        <span>Profile</span>
                       </Link>
 
                       <button 
@@ -107,7 +107,7 @@ export default function Header({ setShowMenuPopup, setShowWalletPopup }: HeaderP
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
                         </svg>
-                        <span>复制地址</span>
+                        <span>Copy Address</span>
                       </button>
                       <button 
                         className="w-full px-4 py-2 text-left text-sm hover:bg-gray-100 flex items-center space-x-2"
@@ -118,7 +118,7 @@ export default function Header({ setShowMenuPopup, setShowWalletPopup }: HeaderP
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
-                        <span>在浏览器中查看</span>
+                        <span>View in Browser</span>
                       </button>
                       <hr className="my-2" />
                       <button 
@@ -128,7 +128,7 @@ export default function Header({ setShowMenuPopup, setShowWalletPopup }: HeaderP
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                         </svg>
-                        <span>断开连接</span>
+                        <span>Disconnect</span>
                       </button>
                     </div>
                   </div>
