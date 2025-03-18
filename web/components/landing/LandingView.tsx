@@ -20,6 +20,7 @@ interface ResponsiveViewProps {
 }
 
 export default function ResponsiveView({ userObjects }: ResponsiveViewProps) {
+  console.log('userObjects', userObjects);
   // 移动端逻辑
   const [showMenuPopup, setShowMenuPopup] = useState(false);
   const [showWalletPopup, setShowWalletPopup] = useState(false);
