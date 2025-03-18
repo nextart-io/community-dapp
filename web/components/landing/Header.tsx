@@ -24,7 +24,7 @@ export default function Header({ setShowMenuPopup, setShowWalletPopup }: HeaderP
     <header className="w-full bg-white z-[100]">
       {/* 移动端Header */}
       <div className="flex justify-between items-center p-5 md:hidden">
-        <div className="flex items-center">
+        <Link href="/" className="flex items-center">
           <Image 
             src="/navbar/logo.png" 
             alt="NEXT ART" 
@@ -32,7 +32,7 @@ export default function Header({ setShowMenuPopup, setShowWalletPopup }: HeaderP
             height={40} 
             className="object-contain"
           />
-        </div>
+        </Link>
         <button 
           className="p-0 bg-[#FFFC26] rounded-full w-12 h-12 flex items-center justify-center"
           onClick={() => setShowMenuPopup(true)}
@@ -51,7 +51,7 @@ export default function Header({ setShowMenuPopup, setShowWalletPopup }: HeaderP
       <div className="hidden md:block fixed top-0 left-0 right-0 bg-white shadow-md z-[100]">
         <div className="container mx-auto px-6">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
+            <Link href="/" className="flex items-center">
               <Image 
                 src="/navbar/logo.png" 
                 alt="NEXT ART" 
@@ -59,7 +59,7 @@ export default function Header({ setShowMenuPopup, setShowWalletPopup }: HeaderP
                 height={48} 
                 className="object-contain"
               />
-            </div>
+            </Link>
             
             {/* 桌面端显示的菜单内容 */}
             <div className="flex items-center space-x-4">
