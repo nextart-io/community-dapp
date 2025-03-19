@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { useCurrentAccount, useDisconnectWallet } from '@mysten/dapp-kit'
+import { useDisconnectWallet } from '@mysten/dapp-kit'
 
 interface ProfileEditModalProps {
   username: string;
@@ -30,7 +30,6 @@ export default function ProfileEditModal({
   isOpen
 }: ProfileEditModalProps) {
   const [isVisible, setIsVisible] = useState(false);
-  const currentAccount = useCurrentAccount();
   const { mutate: disconnectWallet } = useDisconnectWallet();
   
   // 处理地址显示格式
@@ -69,7 +68,7 @@ export default function ProfileEditModal({
         {/* 标题 */}
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-gray-900">Edit profile</h2>
-          <p className="text-gray-500">Edit your profile here. Click save when you're done.</p>
+          <p className="text-gray-500">Edit your profile here. Click save when you&apos;re done.</p>
         </div>
         
         {/* 钱包地址 */}

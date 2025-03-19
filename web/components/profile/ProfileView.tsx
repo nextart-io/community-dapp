@@ -10,7 +10,6 @@ import Footer from '../landing/Footer'
 import Donate from '../landing/Donate'
 import WalletModal from '../landing/WalletModal'
 import MenuModal from '../landing/MenuModal'
-import Image from 'next/image'
 import ProfileCard from './ProfileCard'
 import MintProjects from './MintProjects'
 import ProfileEditModal from './ProfileEditModal'
@@ -26,8 +25,8 @@ export default function ProfileView({ userObjects }: ProfileViewProps) {
   const [showWalletPopup, setShowWalletPopup] = useState(false);
   const [username, setUsername] = useState('NEXTART');
   const [twitterAccount, setTwitterAccount] = useState('');
-  const [bio, setBio] = useState('');
-  const [avatarUrl, setAvatarUrl] = useState('/profile/avatar.png');
+  const [bio] = useState('');
+  const [avatarUrl] = useState('/profile/avatar.png');
   const [showEditForm, setShowEditForm] = useState(false);
   
   // 使用钩子获取当前连接的账户
@@ -94,7 +93,7 @@ export default function ProfileView({ userObjects }: ProfileViewProps) {
                 </div>
                 
                 {/* 个人资料编辑弹窗 */}
-                <ProfileEditModal 
+                <ProfileEditModal
                   username={username}
                   setUsername={setUsername}
                   twitterAccount={twitterAccount}
