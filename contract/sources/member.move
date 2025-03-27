@@ -1,7 +1,7 @@
 module nextart_community::member;
 
 use std::{
-    string::String
+    string::{Self,String}
 };
 use sui::{
     table::{Self, Table},
@@ -13,13 +13,13 @@ use sui::{
     coin::{Self, Coin},
     sui::SUI,
 };
-use nextart_community::version::{Version, check_version};
-use nextart_community::rule::{is_valid_rule, Rule};
+use nextart_community::version::{Version,OffChainValidator, check_version,off_chain_validation,create_off_chain_validator};
+
 public struct MEMBER has drop {}
 
 // ====== Errors =======
- const EInvalidRule: u64 = 0;
-fun err_invalid_rule() { abort EInvalidRule }
+ const ERROR_INVALID_VALIDATION: u64 = 0;
+
 
 #[allow(unused_field)]
 public struct Member has key {
@@ -64,9 +64,11 @@ public struct EditMemberEvent has copy, drop {
     member: ID,
 }
 
-public struct PaymentEvent has copy, drop {
-    sender: address,
-    amount: u64,
+public struct UpdateMemberRecordEvent has copy, drop {
+    addr:address,
+    amount:u64,
+    balance:u64,
+    type_name:String
 }
 
 fun init(otw: MEMBER, ctx: &mut TxContext) {
@@ -119,30 +121,29 @@ public fun Pay(
     let receipt = Receipt {
         amount: value,
     };
-    emit(PaymentEvent {
-        sender: ctx.sender(),
-        amount: value,
+    emit(UpdateMemberRecordEvent{
+        addr: ctx.sender(),
+        amount: 0,
+        balance: value,
+        type_name:string::utf8(b"payment")
     });
     receipt
 }
 
-public fun mint_member<R: drop>(
+public fun mint_member(
     record: &mut MemberRecord, 
-    rule: &Rule,
+    sig:vector<u8>,
     name: String,
     avatar: String,
     introduction: String,
     version: &Version,
     clock: &Clock,
-    kind: u8,
     receipt: Receipt,
     ctx: &mut TxContext
 ) {
     check_version(version);
+    assert!(off_chain_validation<address>(sig, ctx.sender()), ERROR_INVALID_VALIDATION);
     let sender = ctx.sender();
-    if (!is_valid_rule<R>(rule, kind)) {    
-        err_invalid_rule();
-    };
     let Receipt { amount } = receipt;
     table::add<address, u64>(&mut record.record, sender, amount);
     let member = Member {
@@ -192,11 +193,14 @@ public fun edit_member(
     mut name: Option<String>,
     mut avatar: Option<String>,
     mut introduction: Option<String>,
+    sig:vector<u8>,
     version: &Version,
     clock: &Clock,
     ctx: &TxContext
 ) {
     check_version(version);
+    let off_chain_validator = create_off_chain_validator(member.last_time,ctx);
+    assert!(off_chain_validation<OffChainValidator>(sig, off_chain_validator), ERROR_INVALID_VALIDATION);
     if (name.is_some()) {
         member.name = option::extract(&mut name);
     };
@@ -217,32 +221,30 @@ public fun edit_member(
     });
 }
 
-
-public(package) fun set_last_time(member: &mut Member, clock: &Clock) {
-    member.last_time = clock::timestamp_ms(clock);
-}
-
 public fun points(member: &Member): u64 {
     member.points
 }
 
-public fun last_time(member: &Member): u64 {
-    member.last_time
-}
-
-public fun add_points<R: drop>(
+public fun add_points(
     member: &mut Member,
     version: &Version,
+    sig:vector<u8>,
     amount: u64,
-    rule: &Rule,
-    kind: u8,
+    clock:&Clock,
+    ctx: &TxContext
 ) {
     check_version(version);
-    if (!is_valid_rule<R>(rule, kind)) {    
-        err_invalid_rule();
-    }; 
+    let off_chain_validator = create_off_chain_validator(member.last_time,ctx);
+    assert!(off_chain_validation<OffChainValidator>(sig, off_chain_validator), ERROR_INVALID_VALIDATION);
     let points = &mut member.points;
     *points = *points + amount;
+    member.last_time = clock::timestamp_ms(clock);
+    emit(UpdateMemberRecordEvent{
+        addr: ctx.sender(),
+        amount,
+        balance: 0,
+        type_name:string::utf8(b"add_points")
+    });
 }
 
 public fun update_points(
