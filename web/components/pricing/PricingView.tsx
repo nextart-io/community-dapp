@@ -4,23 +4,28 @@ import { useCurrentAccount } from '@mysten/dapp-kit'
 import { CategorizedObjects } from '@/utils/assetsHelpers'
 import { useState } from 'react'
 
-// 导入拆分后的组件
-import Header from './Header'
-import Introduction from './Introduction'
-import Activities from './Activities'
-import CoPartners from './CoPartners'
-import NFTWall from './NFTWall'
-import Donate from './Donate'
-import Footer from './Footer'
-import WalletModal from './WalletModal'
-import MenuModal from './MenuModal'
+// 导入组件
+import Header from '../landing/Header'
+import Footer from '../landing/Footer'
+import Donate from '../landing/Donate'
+import WalletModal from '../landing/WalletModal'
+import MenuModal from '../landing/MenuModal'
+import PricingContent from './PricingContent'
 
-interface ResponsiveViewProps {
+interface PricingViewProps {
   userObjects: CategorizedObjects | null;
 }
 
-export default function ResponsiveView({ userObjects }: ResponsiveViewProps) {
-  console.log('userObjects', userObjects);
+interface PricingOption {
+  id: string;
+  title: string;
+  highlightedText: string;
+  regularText: string;
+  imageSrc: string;
+}
+
+export default function PricingView({ userObjects }: PricingViewProps) {
+  console.log("userObjects", userObjects);
   // 移动端逻辑
   const [showMenuPopup, setShowMenuPopup] = useState(false);
   const [showWalletPopup, setShowWalletPopup] = useState(false);
@@ -49,6 +54,44 @@ export default function ResponsiveView({ userObjects }: ResponsiveViewProps) {
     }
   };
 
+  // 处理Get It按钮点击
+  const handleGetIt = (optionId: string) => {
+    if (!currentAccount) {
+      // 如果用户未连接钱包，显示钱包连接弹窗
+      setShowWalletPopup(true);
+    } else {
+      // 如果用户已连接钱包，则可以进行后续操作
+      console.log(`用户选择了 ${optionId} 选项`);
+      // 这里可以添加mint NFT的逻辑
+      alert(`您已选择 ${optionId} 选项！即将进行Mint操作...`);
+    }
+  };
+
+  // 定义价格选项
+  const pricingOptions: PricingOption[] = [
+    {
+      id: "rich",
+      title: "I'm fucking rich",
+      highlightedText: "rich",
+      regularText: "I'm fucking",
+      imageSrc: "/pricing/rich.png"
+    },
+    {
+      id: "money",
+      title: "Take my money",
+      highlightedText: "money",
+      regularText: "Take my",
+      imageSrc: "/pricing/money.png"
+    },
+    {
+      id: "free",
+      title: "Free mint",
+      highlightedText: "Free",
+      regularText: "mint",
+      imageSrc: "/pricing/free.png"
+    }
+  ];
+
   return (
     <div className="relative min-h-screen bg-white font-sans">
       {/* 响应式Header组件 */}
@@ -57,25 +100,11 @@ export default function ResponsiveView({ userObjects }: ResponsiveViewProps) {
         setShowWalletPopup={setShowWalletPopup} 
       />
 
-      {/* 主要内容 - 响应式布局 */}
-      <main className="pt-0 md:pt-20 overflow-visible">      
-        {/* 介绍区域 - 全宽 */}
-        <Introduction />
-        
-        {/* 活动区域 - 全宽 */}
-        <Activities />
-        
-        {/* 合作伙伴区域 - 全宽 */}
-        <CoPartners />
-        
-        {/* NFT墙 - 全宽 */}
-        <NFTWall />
-        
-        <div className="px-3 md:px-6 lg:px-8 max-w-7xl mx-auto">
-          {/* 捐赠区域 */}
-          <Donate />
-        </div>
-      </main>
+      {/* 主要内容 - 使用PricingContent组件 */}
+      <PricingContent pricingOptions={pricingOptions} onGetIt={handleGetIt} />
+      
+      {/* 捐赠区域 */}
+      <Donate />
       
       {/* 页脚 */}
       <Footer />
@@ -100,4 +129,4 @@ export default function ResponsiveView({ userObjects }: ResponsiveViewProps) {
       />
     </div>
   );
-} 
+}

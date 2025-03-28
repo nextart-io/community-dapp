@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Introduction() {
   return (
@@ -46,12 +47,14 @@ export default function Introduction() {
 
             {/* 中间黄色GET YOUR COMMUNITY NFT */}
             <div className="absolute left-[60%] top-[-48px] transform -translate-x-1/2 z-20 w-[380px] h-[380px]">
-              <Image
-                src="/landingpage/introduction/communitynft.png"
-                alt="云朵背景"
-                fill
-                className="object-contain"
-              />
+              <Link href="/pricing" className="cursor-pointer">
+                <Image
+                  src="/landingpage/introduction/communitynft.png"
+                  alt="云朵背景"
+                  fill
+                  className="object-contain"
+                />
+              </Link>
             </div>
 
             {/* 左下角白色角色 */}
@@ -124,12 +127,14 @@ export default function Introduction() {
 
             {/* 中间黄色GET YOUR COMMUNITY NFT */}
             <div className="absolute md:left-[50%] md:top-[0] transform -translate-x-1/2 z-20 md:w-[450px] md:h-[450px] lg:w-[500px] lg:h-[500px]">
-              <Image
-                src="/landingpage/introduction/communitynft.png"
-                alt="云朵背景"
-                fill
-                className="object-contain"
-              />
+              <Link href="/pricing" className="cursor-pointer">
+                <Image
+                  src="/landingpage/introduction/communitynft.png"
+                  alt="云朵背景"
+                  fill
+                  className="object-contain"
+                />
+              </Link>
             </div>
 
             {/* 左下角白色角色 */}

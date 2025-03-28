@@ -41,7 +41,7 @@ export default function WalletModal({
         
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2 md:mb-4">Add profile</h2>
         <p className="text-gray-500 mb-6 md:text-lg">
-          To get the community nft you first need to connect with the sui wallet and add your profile here. Click save when you're done.
+          To get the community nft you first need to connect with the sui wallet and add your profile here. Click save when you&apos;re done.
         </p>
         
         <div className="mb-6 md:mb-8">
