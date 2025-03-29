@@ -343,6 +343,7 @@ public fun add_points_for_testing(
     clock: &Clock,
     ctx: &TxContext,
 ) {
+    
     check_version(version);
     let points = &mut member.points;
     *points = *points + amount;
