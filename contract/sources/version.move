@@ -91,3 +91,7 @@ public fun update_version(_admin: &SuperAdminCap, version: &mut Version) {
     assert!(version.version < VERSION);
     version.version = VERSION;
 }
+    #[test_only]
+    entry fun init_for_test(ctx: &mut TxContext) {
+        init(ctx);
+    }
